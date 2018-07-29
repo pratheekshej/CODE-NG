@@ -1,0 +1,9 @@
+<app-header [dataRecieved]="kickData">
+</app-header>
+
+<div class="container" style="margin-top: 5%; width: 70%;">
+  <div class="container-fluid">
+    <app-template (emitDataValue)="kickData=$event">
+    </app-template>
+  </div>
+</div>
