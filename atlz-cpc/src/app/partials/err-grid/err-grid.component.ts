@@ -26,8 +26,8 @@ export class ErrGridComponent implements OnInit {
   errStackArray: any     = [];
   returnedArray: any     = [];
   arrayGenerated: any    = [];
-  displayCard: any   = false;
-  expandArea: any    = false;
+  displayCard: any       = false;
+  expandArea: any        = false;
   itemObject: any        = {
     pageNumber   : 0,
     pageIndex    : 1,
@@ -87,7 +87,7 @@ export class ErrGridComponent implements OnInit {
         }
       }
     );
-    console.log('NEW-OBJECT-CREATED ::> ', this.newObjectCited);
+    // console.log('NEW-OBJECT-CREATED ::> ', this.newObjectCited);
     return errorEventData;
   }
 
@@ -96,7 +96,7 @@ export class ErrGridComponent implements OnInit {
   * Processing Derived Array Items
   * */
   processArrayItems(arrayElems: any): void {
-    console.log('ARRAY-ITEMS ::> ', arrayElems);
+    // console.log('ARRAY-ITEMS ::> ', arrayElems);
     arrayElems.forEach(
       (object: any) => {
         object.editable = false;
@@ -117,12 +117,12 @@ export class ErrGridComponent implements OnInit {
         errorEventIdList = response;
       },
       (error: any) => {
-        console.log('Error In Fetching Error-Data');
+        // console.log('Error In Fetching Error-Data');
         this.modal.errorMessage = 'Something went wrong while fetching results for ID:' + errData.ProcessTransactionEventID;
         this.errorModal.show();
       },
       () => {
-        console.log('PTE-ID Fetch successful!');
+        // console.log('PTE-ID Fetch successful!');
         this.arrayGenerated = this.filterProcessTransactionEventData(errorEventIdList);
       }
     );
@@ -140,7 +140,7 @@ export class ErrGridComponent implements OnInit {
         this.file.fileArray = response;
       },
       (error: any) => {
-        console.log('Error in Fetching File List!');
+        // console.log('Error in Fetching File List!');
         this.spinner.hide();
       },
       () => {
@@ -201,7 +201,7 @@ export class ErrGridComponent implements OnInit {
         this.checkForErrorsInSuccessCallBack(response);
       },
       (error: any) => {
-        console.log('Error Response ::> ', error);
+        // console.log('Error Response ::> ', error);
         this.spinner.hide();
         this.modal.errorMessage = 'Oops! Something went wrong!';
         this.errorModal.show();
@@ -225,7 +225,7 @@ export class ErrGridComponent implements OnInit {
     const endItem              = event.page * event.itemsPerPage;
     this.itemObject.endItem    = endItem;
     /*this.returnedArray         = this.errStackArray.slice(this.itemObject.startItem, this.itemObject.endItem);*/
-    console.log('FILE-NAME ::> ', this.file.fileName);
+    // console.log('FILE-NAME ::> ', this.file.fileName);
     this.fetchErrorStackDataForFileOrPageSelection(
       [event.page],
       [this.itemObject.defaultLimit],
@@ -238,12 +238,12 @@ export class ErrGridComponent implements OnInit {
   * Selecting a file-name from the drop-down
   * */
   selectFileToLoad(): void {
-    console.log(':: File-Selection ::');
-    console.log(
+    // console.log(':: File-Selection ::');
+    /* console.log(
       [this.itemObject.pageIndex],
       [this.itemObject.defaultLimit],
       [this.file.fileName]
-    );
+    ); */
     this.fetchErrorStackDataForFileOrPageSelection(
       [this.itemObject.pageIndex],
       [this.itemObject.defaultLimit],
