@@ -1,0 +1,37 @@
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('../../../assets/img/atlascopco-bg-dark.jpg');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+
+					<span class="logowrap">
+						<img src="../../../assets/img/atlascopco-logo.jpg">
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="username" placeholder="Username" autocomplete="off" [(ngModel)]="signInCredentials.username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Password" autocomplete="off" [(ngModel)]="signInCredentials.password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="btn-login" (click)="signIn()">LOGIN</button>
+						</div>
+
+
+
+
+				</form>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,54 @@
+<table class="table table-bordered grid ac-GridTable">
+
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Event ID</th>
+    <th>File Name</th>
+    <th>FAM Code</th>
+    <th>Customer Name</th>
+    <th>Customer City</th>
+    <th>Email</th>
+    <th>Order Number</th>
+    <th>GAC</th>
+    <!--<th *ngIf="!displayAction">Action</th>-->
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of errStackArray; let i = index" style="cursor: pointer;"
+      [ngClass]="{ 'rowSelected' : data.newObj}" (click)="expandErrRow(data)">
+    <td>{{ ((i+1)+((itemObject.pageNumber)*itemObject.defaultLimit)) }}</td>
+    <td>
+      <div *ngIf="!data.editable; else editableBlock1;">
+        {{data.ProcessTransactionEventID}}
+      </div>
+      <ng-template #editableBlock1>
+        <input type="text" class="form-control" name="name" placeholder="Name"
+               [(ngModel)]="data.ProcessTransactionEventID">
+      </ng-template>
+    </td>
+    <td>
+      <div>
+        {{data.FileName}}
+      </div>
+      <!--<ng-template #editableBlock2>
+                        <select class="form-control" [(ngModel)]="data.position">
+                          <option name="position" [ngValue]="position.titleId" *ngFor="let position of positionArray">{{position.title}}</option>
+                        </select>
+                      </ng-template>-->
+    </td>
+    <td>{{data.FAMCode}}</td>
+    <td>{{data.CustomerName}}</td>
+    <td>{{data.CustomerCity}}</td>
+    <td>{{data.Email}}</td>
+    <td>{{data.OrderNumber}}</td>
+    <td>{{data.GAC}}</td>
+    <!--<td *ngIf="!displayAction" width="55" style="cursor: pointer;">
+                    <i class="fa fa-pencil-square-o" *ngIf="!data.editable" aria-hidden="true" (click)="editGridRow(data)" style="margin-right: 8px; margin-left: 8px;"></i>
+                    <i class="fa fa-times" *ngIf="data.editable" aria-hidden="true" (click)="data.editable=false" style="margin-right: 8px; margin-left: 8px;"></i>
+                    <i class="fa fa-check" *ngIf="data.editable" aria-hidden="true"></i>
+                    <i class="fa fa-trash-o" *ngIf="!data.editable" aria-hidden="true" (click)="deleteGridRow(data)"></i>
+                  </td>-->
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,42 @@
+[
+  {
+    "id" : 1,
+    "title" : "Software Engineer",
+    "titleId" : "software_engineer"
+  },
+  {
+    "id" : 2,
+    "title" : "Marketing Designer",
+    "titleId" : "marketing_designer"
+  },
+  {
+    "id" : 3,
+    "title" : "Regional Director",
+    "titleId" : "regional_director"
+  },
+  {
+    "id" : 4,
+    "title" : "Javascript Developer",
+    "titleId" : "javascript_developer"
+  },
+  {
+    "id" : 5,
+    "title" : "Integration Specialist",
+    "titleId" : "Integration_specialist"
+  },
+  {
+    "id" : 6,
+    "title" : "Sales Assistant",
+    "titleId" : "sales_assistant"
+  },
+  {
+    "id" : 7,
+    "title" : "Accountant",
+    "titleId" : "accountant"
+  },
+  {
+    "id" : 8,
+    "title" : "Junior Technical Author",
+    "titleId" : "junior_technical_author"
+  }
+]
