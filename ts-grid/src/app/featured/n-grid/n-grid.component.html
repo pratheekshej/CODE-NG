@@ -1,56 +1,129 @@
 
 <div class="container">
-  <div class="container-fluid">
-
-    <div style="margin-top: 10px; margin-bottom: 8px; float: right;">
-      <button class="btn btn-block btn-primary">Add</button>
+    <div class="btn-div">
+        <button class="btn btn-primary btn-sm btn-block" (click)="addNewDataRow()">add
+        </button>
     </div>
-    <p-table [columns]="cols"[value]="vesselData" dataKey="vin">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th style="width: 3em"></th>
-                <th *ngFor="let col of columns">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
-            <tr>
-                <td>
-                    <a href="#" [pRowToggler]="rowData">
-                        <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-                    </a>
-                </td>
-                <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-                </td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
-            <tr>
-                <td [attr.colspan]="columns.length + 1">
-                    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-                        <div class="ui-g-12 ui-md-9">
-                            <div class="ui-g">
-                                <div class="ui-g-12">
-                                    <b>Vin:</b> {{rowData.vin}}
-                                </div>
-                                <div class="ui-g-12">
-                                    <b>Year:</b> {{rowData.year}}
-                                </div>
-                                <div class="ui-g-12">
-                                    <b>Brand:</b> {{rowData.brand}}
-                                </div>
-                                <div class="ui-g-12">
-                                    <b>Color:</b> {{rowData.color}}
+
+    <div class="container-fluid">
+        <p-table [columns]="cols" [value]="vesselData" dataKey="vin">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 3em"></th>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-expanded="expanded" let-columns="columns">
+                <tr>
+                    <td>
+                        <a href="#" [pRowToggler]="row"> <!--[pRowToggler]="rowData"-->
+                            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                        </a>
+                    </td>
+                    <td *ngFor="let col of columns">
+                        {{row[col.field]}}
+                    </td>
+                    <td>
+                        <div (click)="deleteDataRow(row)"
+                             style="color: brown; font-weight: bold; cursor: pointer;">
+                            X
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                <tr>
+                    <td [attr.colspan]="columns.length + 1">
+                        <form name="nGridForm" #nGridForm="ngForm" novalidate>
+                            <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+                                <div class="ui-g-12 ui-md-9">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">
+                                            <table>
+                                                <tr>
+                                                    <td width='150px'>
+                                                        <b>Year:</b>
+                                                    </td>
+                                                    <td>
+                                                        <!-- {{rowData.year}} -->
+                                                        <input type="text" pInputText name="year" #year="ngModel" [(ngModel)]="rowData.year" required/>
+                                                        <div *ngIf="year.invalid && year.dirty" style="color: crimson;">
+                                                            <div *ngIf="year.errors.required">Please enter the year</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <table>
+                                                <tr>
+                                                    <td width='150px'>
+                                                        <b>Brand:</b>
+                                                    </td>
+                                                    <td>
+                                                        <!-- {{rowData.brand}} -->
+                                                        <input type="text" pInputText name="brand" #brand="ngModel" [(ngModel)]="rowData.brand" required/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <table>
+                                                <tr>
+                                                    <td width='150px'>
+                                                        <b>Color:</b>
+                                                    </td>
+                                                    <td>
+                                                        <!-- {{rowData.color}} -->
+                                                        <input type="text" pInputText name="color" #color="ngModel" [(ngModel)]="rowData.color"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-
-  </div>
+                            <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+                                <div class="ui-g-12 ui-md-9">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">
+                                            <table>
+                                                <tr>
+                                                    <td width='150px'>
+                                                        <b>Price:</b>
+                                                    </td>
+                                                    <td>
+                                                        <!-- {{rowData.year}} -->
+                                                        <input type="text" pInputText name="price" #price="ngModel" [(ngModel)]="rowData.price"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <table>
+                                                <tr>
+                                                    <td width='150px'>
+                                                        <b>Sake Date:</b>
+                                                    </td>
+                                                    <td>
+                                                        <!-- {{rowData.brand}} -->
+                                                        <input type="text" pInputText name="saleDate" #saleDate="ngModel" [(ngModel)]="rowData.saleDate"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>

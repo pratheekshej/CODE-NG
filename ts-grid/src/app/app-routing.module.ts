@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NGridComponent } from './featured/n-grid/n-grid.component';
 import { RGridComponent } from './featured/r-grid/r-grid.component';
+import { DGridComponent } from './featured/d-grid/d-grid.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'r-grid',
     component: RGridComponent
+  },
+  {
+    path: 'd-grid',
+    component: DGridComponent
   },
   {
     path: '**',
