@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common/common.service';
+import { ColumnModel } from '../../data-models/data-table.model';
 
 @Component({
   selector: 'app-d-grid',
@@ -9,7 +10,7 @@ import { CommonService } from '../../services/common/common.service';
 export class DGridComponent implements OnInit {
 
   vesselData: any = [];
-  cols: any = [];
+  cols: ColumnModel[] = [];
 
 
   constructor(
@@ -20,26 +21,12 @@ export class DGridComponent implements OnInit {
   setColumns(): void {
     this.cols = [];
     this.cols = [
-      {
-        field: 'vesselName',
-        header: 'Vessel Name'
-      },
-      {
-        field: 'owner',
-        header: 'Owner'
-      },
-      {
-        field: 'imoNo',
-        header: 'IMO#'
-      },
-      {
-        field: 'flag',
-        header: 'Flag'
-      },
-      {
-        field: 'kingOfShip',
-        header: 'King Of Ship'
-      }
+      { field: 'vesselName', header: 'Vessel Name', filterType: 'input' },
+      { field: 'owner', header: 'Owner', filterType: 'Twice' },
+      { field: 'imoNo', header: 'IMO#' },
+      { field: 'flag', header: 'Flag' },
+      { field: 'kingOfShip', header: 'King Of Ship' },
+      { field: 'action', header: 'Action' },
     ];
   }
 

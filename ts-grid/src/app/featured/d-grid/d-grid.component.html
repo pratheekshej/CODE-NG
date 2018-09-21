@@ -1,12 +1,6 @@
 <div class="container">
   <div class="container-fluid">
-    <p-table #dt [columns]="cols" [value]="vesselData"><!--[paginator]="true" [rows]="10"-->
-        <!-- <ng-template pTemplate="caption">
-            <div style="text-align: right">        
-                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-            </div>
-        </ng-template> -->
+    <!-- <p-table #dt [columns]="cols" [value]="vesselData">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns">
@@ -21,13 +15,6 @@
                     <input *ngSwitchCase="'imoNo'"
                            pInputText type="text"
                            (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-                    <!-- <div *ngSwitchCase="'year'">
-                        Value < {{yearFilter}}
-                        <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer" *ngIf="yearFilter"></i>
-                        <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
-                    </div>
-                    <p-dropdown *ngSwitchCase="'brand'" [options]="brands" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
-                    <p-multiSelect *ngSwitchCase="'color'" [options]="colors" defaultLabel="All Colors" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect> -->
                 </th>
             </tr>
         </ng-template>
@@ -38,6 +25,19 @@
                 </td>
             </tr>
         </ng-template>
-    </p-table>
+    </p-table> -->
+    <app-data-table [cols]="cols" 
+                    [values]="tableRow" 
+                    [paginator]="false"
+                    [rows]="10"
+                    [enableLocalFieldFilter]="true"
+                    [enableGlobalFieldFilter]="false"
+                    [sort]="true"
+                    [actions]="actions"
+                    (filterByField)="filter($event);"
+                    (viewRow)="view($event);" 
+                    (editRow)="edit($event);"
+                    (deleteRow)="deleteVessel($event);">
+    </app-data-table>
   </div>
 </div>

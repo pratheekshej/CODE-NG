@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { VesselData } from '../../data-models/vessel-dm';
+import { VesselData } from '../../data-models/vessel-dm.model';
 
 @Component({
   selector: 'app-n-grid',
