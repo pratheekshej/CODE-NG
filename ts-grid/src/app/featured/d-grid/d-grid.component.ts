@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common/common.service';
 import { ColumnModel } from '../../data-models/data-table.model';
+import { GridDataContent } from './d-grid.model';
 
 @Component({
   selector: 'app-d-grid',
@@ -9,7 +10,7 @@ import { ColumnModel } from '../../data-models/data-table.model';
 })
 export class DGridComponent implements OnInit {
 
-  vesselData: any = [];
+  vesselData: GridDataContent[] = [];
   cols: ColumnModel[] = [];
 
 
@@ -32,12 +33,13 @@ export class DGridComponent implements OnInit {
 
 
   ngOnInit() {
+    let vesselData = [];
     this.vesselData = [];
     this.commonService.getJsonData('data').subscribe(
       (res: any) => {
         res.forEach(
           (obj) => {
-            this.vesselData = [...this.vesselData, obj];
+            vesselData = [...vesselData, obj];
           }
         );
         console.log('Vessel Data :> ', this.vesselData);
