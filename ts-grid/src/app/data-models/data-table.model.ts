@@ -6,6 +6,7 @@ export interface ColumnModel {
     header: string;
     filterType?: string;
     filterPlaceholder?: string;
+    typeWidth?: string;
 }
 
 

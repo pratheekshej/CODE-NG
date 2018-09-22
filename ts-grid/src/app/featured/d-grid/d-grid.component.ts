@@ -59,9 +59,9 @@ export class DGridComponent implements OnInit {
     this.columns = [];
     this.columns = [
       { field: 'slNo', header: 'SLNO' },
-      { field: 'vesselName', header: 'Vessel Name', filterType: 'input' },
-      { field: 'owner', header: 'Owner', filterType: 'input' },
-      { field: 'imoNo', header: 'IMO#', filterType: 'input' },
+      { field: 'vesselName', header: 'Vessel Name', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'Vessel Name' },
+      { field: 'owner', header: 'Owner', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'Owner' },
+      { field: 'imoNo', header: 'IMO#', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'IMO' },
       { field: 'flag', header: 'Flag' },
       { field: 'kingOfShip', header: 'Kind of Ship' },
       { field: 'action', header: 'Action' },

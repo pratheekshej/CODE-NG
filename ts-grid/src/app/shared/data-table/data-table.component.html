@@ -1,5 +1,4 @@
-<p-table #dt [columns]="cols" [value]="_tableRow">
-    <!--[paginator]="true" [rows]="10"-->
+<p-table #dt [columns]="cols" [value]="_tableRow"><!--[paginator]="true" [rows]="10"-->
     <ng-template pTemplate="caption" *ngIf="enableGlobalFieldFilter">
         <div style="text-align: right">
             <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -8,15 +7,13 @@
     </ng-template>
     <ng-template pTemplate="header" let-columns>
         <tr>
-            <th *ngFor="let col of columns">
+            <th *ngFor="let col of columns" width="{{ (col.field == 'slNo') ? '65px' : '' }}">
                 {{col.header}}
             </th>
         </tr>
         <tr *ngIf="enableLocalFieldFilter">
             <th [ngSwitch]="col?.filterType" *ngFor="let col of columns">
-                <div *ngSwitchCase="'input'">
-                    <input type="text" pInputText [(ngModel)]="searchParams[col.field]" (input)="filterLocally($event.target.value, col.field)">
-                </div>
+                <input [ngStyle]="{ 'width' : col?.typeWidth }" *ngSwitchCase="'input'" type="text" pInputText placeholder="{{ col?.filterPlaceholder }}" [(ngModel)]="searchParams[col.field]" (input)="filterLocally($event.target.value, col.field)">
             </th>
         </tr>
     </ng-template>

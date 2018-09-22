@@ -10,12 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class DataTableComponent implements OnInit {
 
   /**
-   *  Table cols.
+   *  TABLE COL VALUES
    */
   @Input() cols: any[];
 
   /**
-   * Table actions such ass edit, delete.
+   * TABLE ACTIONS : ADD, EDIT & DELETE
    */
   @Input() actions: TableActions;
 
@@ -34,6 +34,9 @@ export class DataTableComponent implements OnInit {
   @Input() scrollable: boolean;
   @Input() scrollHeight: string;
 
+  /**
+   * OUTPUT EVENTS
+   */
   @Output() filterGlobal: EventEmitter<any> = new EventEmitter();
   @Output() filterByField: EventEmitter<any> = new EventEmitter();
   @Output() lazyLoadData: EventEmitter<any> = new EventEmitter();
@@ -42,23 +45,28 @@ export class DataTableComponent implements OnInit {
   @Output() viewRow: EventEmitter<any> = new EventEmitter();
 
 
+  /**
+   * TABLE ENTITIES AND ELEMENTS FOR DATA BINDING
+   */
   public _tableRow: any[] = [];
   private _originalData: any[] = [];
-  private searchParams = {};
+  private searchParams: any = {};
 
 
   /**
-   * TABLE DATA VALUE SET UP
+   * TABLE DATA-VALUE SETTERS/GETTERS
    */
   @Input('values')
   set valueList(value) {
     if (value) {
-      setTimeout(() => {
-        this._tableRow = [...value];
-        this._tableRow = this._tableRow.slice();
-        this._originalData = this._tableRow;
-        this.filter();
-      }, 50);
+      setTimeout(
+        () => {
+          this._tableRow     = [...value];
+          this._tableRow     = this._tableRow.slice();
+          this._originalData = this._tableRow;
+          this.filter();
+        }, 50
+      );
     }
   }
   get values() {
@@ -81,7 +89,6 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(
       (response: any) => {
-        console.log('RESPONSE :> ', response);
         for (const index in response) {
           if (response.hasOwnProperty(index)) {
             this.searchParams[index] = response[index];
@@ -93,7 +100,7 @@ export class DataTableComponent implements OnInit {
 
 
   /**
-   * DATA FILTER METHOD
+   * DATA ON-SEARCH FILTER METHOD
    */
   filter() {
     let dataList = this.values;
