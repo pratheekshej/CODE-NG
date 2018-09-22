@@ -6,7 +6,7 @@ export interface GridDataContent {
     id: number;
     vesselName: string;
     owner: string;
-    IMO_No: string;
+    imoNo: string;
     flag: string;
     kind: string;
 }

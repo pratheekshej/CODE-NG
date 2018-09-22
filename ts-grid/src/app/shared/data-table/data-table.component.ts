@@ -81,6 +81,7 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(
       (response: any) => {
+        console.log('RESPONSE :> ', response);
         for (const index in response) {
           if (response.hasOwnProperty(index)) {
             this.searchParams[index] = response[index];
@@ -101,7 +102,7 @@ export class DataTableComponent implements OnInit {
         for (const key in this.searchParams) {
           if (
             typeof item[key] === 'undefined' ||
-            (item[key] && item[key].toLowerCase().indexOf(this.searchParams[key].toLowerCase()) === -1)
+            ((item[key] && item[key].toLowerCase().indexOf(this.searchParams[key].toLowerCase())) === -1)
           ) {
             return false;
           }
@@ -117,6 +118,15 @@ export class DataTableComponent implements OnInit {
    * FILTER LOCALLY
    */
   filterLocally(value: any, field: any): void {
+    this.filter();
+    this.filterByField.emit([value, field]);
+  }
+
+
+  /**
+   * CLEAR SEARCH RESULTS
+   */
+  clear(value, field): void {
     this.filter();
     this.filterByField.emit([value, field]);
   }
