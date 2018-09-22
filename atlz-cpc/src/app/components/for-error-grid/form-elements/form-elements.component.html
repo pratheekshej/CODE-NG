@@ -1,0 +1,30 @@
+<div>
+  <div class="ac-right-fxd position-rtl" [ngClass]="{ 'position-rtl-wide animated slideInRight' : expandArea }">
+    <div class="maximize" (click)="expandArea=!expandArea">
+      <img class="pull-right" src="../../../assets/styles/atlas/images/Ico-max.png" alt="">
+    </div>
+
+    <div class="form-group" *ngFor="let data of arrayGenerated; let i=index;">
+      <div class="ac-error-sort-top" *ngIf="data.IsError; else elseBlock">
+        <div class="ac-labelspanwrap">
+          <label>{{data.FieldName | underscoreEliminator}}</label>
+          <input type="text"
+                 name="name"
+                 [(ngModel)]="newObjectCited[data.FieldName]"
+                 class="form-control ac-errorinput">
+        </div>
+      </div>
+
+      <ng-template #elseBlock>
+        <div class="ac-labelspanwrap">
+          <label>{{data.FieldName | underscoreEliminator}}</label>
+          <span>{{data.ColumnValue}}</span>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="pull-right" style="padding-right: 12px;">
+    <button class="btn btn-primary" (click)="see()">UPDATE</button>
+  </div>
+</div>

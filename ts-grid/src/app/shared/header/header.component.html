@@ -1,0 +1,23 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" style="cursor: pointer">
+        <a class="nav-link" routerLinkActive="actve" (click)="redirectTo('n-grid')">N-Grid</a> <!--[routerLink]="['/n-grid']" routerLinkActive="active"-->
+      </li>
+      <li class="nav-item" style="cursor: pointer">
+        <a class="nav-link" routerLinkActive="actve" (click)="redirectTo('r-grid')">R-Grid</a> <!--[routerLink]="['/r-grid']" routerLinkActive="active"-->
+      </li>
+      <li class="nav-item" style="cursor: pointer">
+        <a class="nav-link" routerLinkActive="actve" (click)="redirectTo('d-grid')">D-Grid</a> <!--[routerLink]="['/r-grid']" routerLinkActive="active"-->
+      </li>
+    </ul>
+  </div>
+</nav>

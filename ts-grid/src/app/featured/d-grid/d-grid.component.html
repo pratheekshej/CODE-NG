@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="container-fluid">
+    <!-- <p-table #dt [columns]="cols" [value]="vesselData">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <input *ngSwitchCase="'vesselName'"
+                           pInputText type="text"
+                           (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <input *ngSwitchCase="'imoNo'"
+                           pInputText type="text"
+                           (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table> -->
+    <app-data-table [cols]="cols" 
+                    [values]="tableRow" 
+                    [paginator]="false"
+                    [rows]="10"
+                    [enableLocalFieldFilter]="true"
+                    [enableGlobalFieldFilter]="false"
+                    [sort]="true"
+                    [actions]="actions"
+                    (filterByField)="filter($event);"
+                    (viewRow)="view($event);" 
+                    (editRow)="edit($event);"
+                    (deleteRow)="deleteVessel($event);">
+    </app-data-table>
+  </div>
+</div>

@@ -1,0 +1,206 @@
+<div class="tone ac-dashboard-bg">
+  <div class="ac-innerpage">
+
+    <div class="ac-pageheader">
+      <h1 class="ac-pageTitle">Errors & Notifications</h1>
+      <a href="#">File/Format</a>
+      <a href="#" class="active">Data Quality Error</a>
+      <a href="#">Data mapping</a>
+    </div>
+
+    <div class="row" style="margin-bottom: 15px">
+
+
+      <div class="col-md-4">
+        <h3 class="count text-uppercase"><span>Errors </span><span>| {{itemObject.totalItems}}</span></h3>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">Filter by File Name</span> <!--id="basic-addon3"-->
+          <select class="form-control classic" style="padding: 0 30px 0 10px" [(ngModel)]="file.fileName"
+                  (ngModelChange)="selectFileToLoad()">
+            <option value="">Select a File</option>
+            <option [ngValue]="file" *ngFor="let file of file.fileArray">{{file}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">Filter by Error Type</span> <!--id="basic-addon3"-->
+          <select class="form-control classic" style="padding: 0 30px 0 10px">
+            <option value="">Select a Type</option>
+            <option [ngValue]="type" *ngFor="let type of fileTyeArray">{{type}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="ac-page-grid-fixed">
+      <div class="ac-left-fxd">
+
+        <div class="ac-GridTableWrap">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="GridHead ac-GridHeader">
+                <div class="col-md-9">
+                  <label class="text-uppercase title" style="color: #00c5ff; font-weight: normal">Error List</label>
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" style="width:100%!important" placeholder="SEARCH" style="padding: 0 0 0 10px;">
+                </div>
+                <div class="col-md-3 pull-right"></div>
+              </div>
+            </div>
+          </div>
+          <!--<table class="table table-bordered grid ac-GridTable">
+
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Event ID</th>
+              <th>File Name</th>
+              <th>FAM Code</th>
+              <th>Customer Name</th>
+              <th>Customer City</th>
+              <th>Email</th>
+              <th>Order Number</th>
+              <th>GAC</th>
+              &lt;!&ndash;<th *ngIf="!displayAction">Action</th>&ndash;&gt;
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of errStackArray; let i = index" style="cursor: pointer;"
+                [ngClass]="{ 'rowSelected' : data.newObj}" (click)="expandErrRow(data)">
+              <td>{{ ((i+1)+((itemObject.pageNumber)*itemObject.defaultLimit)) }}</td>
+              <td>
+                <div *ngIf="!data.editable; else editableBlock1;">
+                  {{data.ProcessTransactionEventID}}
+                </div>
+                <ng-template #editableBlock1>
+                  <input type="text" class="form-control" name="name" placeholder="Name"
+                         [(ngModel)]="data.ProcessTransactionEventID">
+                </ng-template>
+              </td>
+              <td>
+                <div>
+                  {{data.FileName}}
+                </div>
+                &lt;!&ndash;<ng-template #editableBlock2>
+                                  <select class="form-control" [(ngModel)]="data.position">
+                                    <option name="position" [ngValue]="position.titleId" *ngFor="let position of positionArray">{{position.title}}</option>
+                                  </select>
+                                </ng-template>&ndash;&gt;
+              </td>
+              <td>{{data.FAMCode}}</td>
+              <td>{{data.CustomerName}}</td>
+              <td>{{data.CustomerCity}}</td>
+              <td>{{data.Email}}</td>
+              <td>{{data.OrderNumber}}</td>
+              <td>{{data.GAC}}</td>
+              &lt;!&ndash;<td *ngIf="!displayAction" width="55" style="cursor: pointer;">
+                              <i class="fa fa-pencil-square-o" *ngIf="!data.editable" aria-hidden="true" (click)="editGridRow(data)" style="margin-right: 8px; margin-left: 8px;"></i>
+                              <i class="fa fa-times" *ngIf="data.editable" aria-hidden="true" (click)="data.editable=false" style="margin-right: 8px; margin-left: 8px;"></i>
+                              <i class="fa fa-check" *ngIf="data.editable" aria-hidden="true"></i>
+                              <i class="fa fa-trash-o" *ngIf="!data.editable" aria-hidden="true" (click)="deleteGridRow(data)"></i>
+                            </td>&ndash;&gt;
+            </tr>
+            </tbody>
+          </table>-->
+          <app-ac-data-table
+            [itemObject]="itemObject"
+            [errStackArray]="errStackArray"
+            (newObjectCited)="newObjectCited=$event"
+            (arrayGenerated)="arrayGenerated=$event">
+          </app-ac-data-table>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <nav aria-label="Page navigation" [hidden]="expandArea">
+              <pagination [boundaryLinks] = "true"
+                          [totalItems]    = "itemObject.totalItems"
+                          previousText    = "&lsaquo;"
+                          nextText        = "&rsaquo;"
+                          firstText       = "&laquo;"
+                          lastText        = "&raquo;"
+                          (pageChanged)   = "pageChanged($event)"
+                          [maxSize]       = "5">
+              </pagination>
+              <div class="pull-right">
+                <!--<button type="button" class="btn btn-rowedit pull-right">UPDATE</button>-->
+                <!--<button class="btn btn-primary" (click)="see()">UPDATE</button>-->
+              </div>
+            </nav>
+          </div>
+        </div>
+
+
+      </div>
+      <app-ac-form-elements
+        [arrayGenerated]="arrayGenerated"
+        [newObjectCited]="newObjectCited"
+        (openModel)="see($event)">
+      </app-ac-form-elements>
+      <!--<div class="ac-right-fxd position-rtl" [ngClass]="{ 'position-rtl-wide animated slideInRight' : expandArea }">
+
+        <div class="maximize" (click)="expandArea=!expandArea">
+          <img class="pull-right" src="../../../assets/styles/atlas/images/Ico-max.png" alt="">
+        </div>
+
+        <div class="form-group" *ngFor="let data of arrayGenerated; let i=index;">
+
+          <div class="ac-error-sort-top" *ngIf="data.IsError; else elseBlock">
+            <div class="ac-labelspanwrap">
+              <label>{{data.FieldName | underscoreEliminator}}</label>
+              <input type="text"
+                     name="name"
+                     [(ngModel)]="newObjectCited[data.FieldName]"
+                     class="form-control ac-errorinput">
+            </div>
+          </div>
+
+
+          <ng-template #elseBlock>
+            <div class="ac-labelspanwrap">
+              <label>{{data.FieldName | underscoreEliminator}}</label>
+              <span>{{data.ColumnValue}}</span>
+            </div>
+          </ng-template>
+
+        </div>
+
+      </div>-->
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- MODALS -->
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog"
+     aria-labelledby="dialog-child-name"
+     [config]="{backdrop: 'static'}" (onHidden)="modalHide($event)">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: indianred; color: white;">
+        <h4 id="dialog-child-name" class="modal-title pull-left">error</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{modal.errorMessage}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-ac-modal [openModelDiv]="errorMsgObj">
+</app-ac-modal>
