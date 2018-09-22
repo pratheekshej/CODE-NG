@@ -1,9 +1,8 @@
 <div class="card">
-  <h5 class="card-header">FORM CARD</h5>
+  <h5 class="card-header">EVENT EMISSION</h5>
   <div class="card-body">
-    <!--<h5 class="card-title">Special title treatment</h5>-->
     <div class="card-text">
-      <form>
+      <!--<form>
         <div class="form-group">
           <label for="exampleFormControlInput1">Email</label>
           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -32,10 +31,16 @@
           <label for="exampleFormControlTextarea1">Example textarea</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-      </form>
+      </form>-->
     </div>
-    <button class="btn btn-primary" style="cursor: pointer;" (click)="emitData()">
-      Transmit
+    <button class="btn btn-primary btn-block"
+            style="
+                    cursor: pointer;
+                    width: 35%;
+                    margin: auto;
+                  "
+            (click)="emitData()">
+      {{ btnText | uppercase }} SIGNAL-TRANSMISSION
     </button>
   </div>
 </div>
