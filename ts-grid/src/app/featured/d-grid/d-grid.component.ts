@@ -37,7 +37,7 @@ export class DGridComponent implements OnInit {
 
 
   filter(event: any) {
-    console.log('Filter EVENT in D-GRID :> ', event);
+    console.log('Filter EVENT in D-GRID :> ', event, this.searchParams);
     switch (event[1]) {
       case 'vesselName': this.searchParams.vesselName = event[0];
         break;

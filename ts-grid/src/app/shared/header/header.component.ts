@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  selectedRoute: any;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private activatedR: ActivatedRoute
   ) { }
 
   redirectTo(route): void {
@@ -17,6 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedRoute = 'n-grid';
   }
 
 }

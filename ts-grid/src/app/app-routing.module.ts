@@ -12,15 +12,24 @@ const routes: Routes = [
   },
   {
     path: 'n-grid',
-    component: NGridComponent
+    component: NGridComponent,
+    data: {
+      component : 'n-grid'
+    }
   },
   {
     path: 'r-grid',
-    component: RGridComponent
+    component: RGridComponent,
+    data: {
+      component : 'r-grid'
+    }
   },
   {
     path: 'd-grid',
-    component: DGridComponent
+    component: DGridComponent,
+    data: {
+      component : 'd-grid'
+    }
   },
   {
     path: '**',
