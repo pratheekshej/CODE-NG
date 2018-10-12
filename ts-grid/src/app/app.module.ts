@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DGridComponent } from './featured/d-grid/d-grid.component';
 import { CommonService } from './services/common/common.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RecordRTCComponent } from './featured/record-rtc/record-rtc.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NGridComponent,
     RGridComponent,
-    DGridComponent
+    DGridComponent,
+    RecordRTCComponent
   ],
   imports: [
     FormsModule,

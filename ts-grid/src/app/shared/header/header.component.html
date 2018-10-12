@@ -18,6 +18,9 @@
       <li class="nav-item {{ ((selectedRoute == 'd-grid') ? 'active' : '') }}" style="cursor: pointer">
         <a class="nav-link" [routerLink]="['/d-grid']" routerLinkActive="router-link-active" (click)="selectedRoute='d-grid'">d-grid</a>
       </li>
+      <li class="nav-item {{ ((selectedRoute == 'record') ? 'active' : '') }}" style="cursor: pointer">
+        <a class="nav-link" [routerLink]="['/record']" routerLinkActive="router-link-active" (click)="selectedRoute='record'">record</a>
+      </li>
     </ul>
   </div>
 </nav>
