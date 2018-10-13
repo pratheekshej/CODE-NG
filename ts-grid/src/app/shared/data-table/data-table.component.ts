@@ -31,7 +31,10 @@ export class DataTableComponent implements OnInit {
   @Input() loading: boolean;
   @Input() lazyLoad: boolean;
   @Input() rows: any[];
-  @Input() scrollable: boolean;
+  @Input('scrollable')
+  set scrollable(value: boolean) {
+    this._scrollable = value;
+  }
   @Input() scrollHeight: string;
 
   /**
@@ -51,6 +54,7 @@ export class DataTableComponent implements OnInit {
   public _tableRow: any[] = [];
   private _originalData: any[] = [];
   private searchParams: any = {};
+  public _scrollable: boolean;
 
 
   /**

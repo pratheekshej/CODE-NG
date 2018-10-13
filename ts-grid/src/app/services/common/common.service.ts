@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { HttpClient} from '@angular/common/http';
 export class CommonService {
 
   jsonLocationPath: any = 'assets/json-data/';
+  routerValue: BehaviorSubject<any> = new BehaviorSubject<any>('');
 
   constructor(
     private http: HttpClient
@@ -17,6 +18,10 @@ export class CommonService {
   getJsonData(jsonName: any): Observable<any> {
     const jsonFileName: any = this.jsonLocationPath + jsonName + '.json';
     return this.http.get(jsonFileName);
+  }
+
+  setRouteValue(routeValue: any): void {
+    this.routerValue.next(routeValue);
   }
 
 

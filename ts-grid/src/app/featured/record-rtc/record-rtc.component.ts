@@ -1,3 +1,4 @@
+import { CommonService } from './../../services/common/common.service';
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import * as RecordRTC from 'recordrtc';
 
@@ -13,8 +14,10 @@ export class RecordRTCComponent implements AfterViewInit {
 
   @ViewChild('video') video;
 
-  constructor() {
-    // Do stuff
+  constructor(
+    private commonService: CommonService
+  ) {
+    this.commonService.setRouteValue('record');
   }
 
   ngAfterViewInit() {

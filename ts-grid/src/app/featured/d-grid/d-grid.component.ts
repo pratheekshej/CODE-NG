@@ -33,7 +33,9 @@ export class DGridComponent implements OnInit {
   constructor(
     private commonService: CommonService,
     private _router: Router
-  ) { }
+  ) {
+    this.commonService.setRouteValue('d-grid');
+  }
 
 
   filter(event: any) {
@@ -58,10 +60,30 @@ export class DGridComponent implements OnInit {
   setColumns(): void {
     this.columns = [];
     this.columns = [
-      { field: 'slNo', header: 'SLNO' },
-      { field: 'vesselName', header: 'Vessel Name', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'Vessel Name' },
-      { field: 'owner', header: 'Owner', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'Owner' },
-      { field: 'imoNo', header: 'IMO#', filterType: 'input', typeWidth: '152px', filterPlaceholder: 'IMO' },
+      { field: 'slNo', header: 'SLNO', typeWidth: '65px' },
+      { field: 'vesselName',
+        header: 'Vessel Name',
+        filterType: 'input',
+        typeWidth: '150px',
+        filterWidth: '100%',
+        filterPlaceholder: 'Vessel Name'
+      },
+      {
+        field: 'owner',
+        header: 'Owner',
+        filterType: 'input',
+        typeWidth: '150px',
+        filterWidth: '100%',
+        filterPlaceholder: 'Owner'
+      },
+      {
+        field: 'imoNo',
+        header: 'IMO#',
+        filterType: 'input',
+        typeWidth: '150px',
+        filterWidth: '100%',
+        filterPlaceholder: 'IMO'
+      },
       { field: 'flag', header: 'Flag' },
       { field: 'kingOfShip', header: 'Kind of Ship' },
       { field: 'action', header: 'Action' },

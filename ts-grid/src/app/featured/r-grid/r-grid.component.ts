@@ -1,3 +1,4 @@
+import { CommonService } from './../../services/common/common.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,8 +13,11 @@ export class RGridComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private commonService: CommonService
+  ) {
+    this.commonService.setRouteValue('r-grid');
+  }
 
 
   // INIT

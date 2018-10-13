@@ -5,6 +5,7 @@ export interface ColumnModel {
     field: string;
     header: string;
     filterType?: string;
+    filterWidth?: string;
     filterPlaceholder?: string;
     typeWidth?: string;
 }

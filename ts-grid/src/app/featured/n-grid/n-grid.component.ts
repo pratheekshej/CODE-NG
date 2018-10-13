@@ -1,3 +1,4 @@
+import { CommonService } from './../../services/common/common.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { VesselData } from '../../data-models/vessel-dm.model';
 
@@ -12,7 +13,11 @@ export class NGridComponent implements OnInit, OnChanges {
   cols: any = [];
   expanded: any = false;
 
-  constructor() { }
+  constructor(
+    private commonService: CommonService
+  ) {
+    this.commonService.setRouteValue('n-grid');
+  }
 
 
   /**
