@@ -13,6 +13,7 @@ import { DGridComponent } from './featured/d-grid/d-grid.component';
 import { CommonService } from './services/common/common.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RecordRTCComponent } from './featured/record-rtc/record-rtc.component';
+import { DGridService } from './featured/d-grid/services/d-grid.service';
 
 
 @NgModule({
@@ -33,7 +34,10 @@ import { RecordRTCComponent } from './featured/record-rtc/record-rtc.component';
     InputTextModule,
     HttpClientModule
   ],
-  providers: [CommonService],
+  providers: [
+    CommonService,
+    DGridService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

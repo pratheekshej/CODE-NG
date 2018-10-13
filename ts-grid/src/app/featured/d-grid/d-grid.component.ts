@@ -1,3 +1,4 @@
+import { DGridService } from './services/d-grid.service';
 import { TableActions } from './../../data-models/data-table.model';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common/common.service';
@@ -32,6 +33,7 @@ export class DGridComponent implements OnInit {
 
   constructor(
     private commonService: CommonService,
+    private dGridService: DGridService,
     private _router: Router
   ) {
     this.commonService.setRouteValue('d-grid');
@@ -59,35 +61,7 @@ export class DGridComponent implements OnInit {
 
   setColumns(): void {
     this.columns = [];
-    this.columns = [
-      { field: 'slNo', header: 'SLNO', typeWidth: '65px' },
-      { field: 'vesselName',
-        header: 'Vessel Name',
-        filterType: 'input',
-        typeWidth: '150px',
-        filterWidth: '100%',
-        filterPlaceholder: 'Vessel Name'
-      },
-      {
-        field: 'owner',
-        header: 'Owner',
-        filterType: 'input',
-        typeWidth: '150px',
-        filterWidth: '100%',
-        filterPlaceholder: 'Owner'
-      },
-      {
-        field: 'imoNo',
-        header: 'IMO#',
-        filterType: 'input',
-        typeWidth: '150px',
-        filterWidth: '100%',
-        filterPlaceholder: 'IMO'
-      },
-      { field: 'flag', header: 'Flag' },
-      { field: 'kingOfShip', header: 'Kind of Ship' },
-      { field: 'action', header: 'Action' },
-    ];
+    this.columns = this.dGridService.getColumnData();
   }
 
 

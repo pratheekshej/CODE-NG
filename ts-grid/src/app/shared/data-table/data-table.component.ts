@@ -30,6 +30,7 @@ export class DataTableComponent implements OnInit {
   @Input() enableLocalFieldFilter: boolean;
   @Input() loading: boolean;
   @Input() lazyLoad: boolean;
+  @Input() responsive: boolean;
   @Input() rows: any[];
   @Input('scrollable')
   set scrollable(value: boolean) {
