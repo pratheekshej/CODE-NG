@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   selectedRoute: any;
   subscription: Subscription;
+  viewPrivileges: any;
 
   constructor(
     private router: Router,
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.viewPrivileges = this.commonService.getPrivileges();
     this.selectedRoute = 'n-grid';
   }
 

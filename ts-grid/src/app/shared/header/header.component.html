@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">: : TS-GRID : :</a>
+  <a class="navbar-brand" href="#">: : T-SCRIPTING : :</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,17 +9,25 @@
       <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li> -->
-      <li class="nav-item {{ ((selectedRoute == 'n-grid') ? 'active' : '') }}" style="cursor: pointer">
+      <li class="nav-item {{ ((selectedRoute == 'record') ? 'active' : '') }}" 
+          style="cursor: pointer"
+          *ngIf="viewPrivileges.record">
+        <a class="nav-link" [routerLink]="['/record']" routerLinkActive="router-link-active" (click)="selectedRoute='record'">record</a>
+      </li>
+      <li class="nav-item {{ ((selectedRoute == 'n-grid') ? 'active' : '') }}" 
+          style="cursor: pointer"
+          *ngIf="viewPrivileges.nGrid">
         <a class="nav-link" [routerLink]="['/n-grid']" routerLinkActive="router-link-active" (click)="selectedRoute='n-grid'">n-grid</a>
       </li>
-      <li class="nav-item {{ ((selectedRoute == 'r-grid') ? 'active' : '') }}" style="cursor: pointer">
+      <li class="nav-item {{ ((selectedRoute == 'r-grid') ? 'active' : '') }}" 
+          style="cursor: pointer"
+          *ngIf="viewPrivileges.rGrid">
         <a class="nav-link" [routerLink]="['/r-grid']" routerLinkActive="router-link-active" (click)="selectedRoute='r-grid'">r-grid</a>
       </li>
-      <li class="nav-item {{ ((selectedRoute == 'd-grid') ? 'active' : '') }}" style="cursor: pointer">
+      <li class="nav-item {{ ((selectedRoute == 'd-grid') ? 'active' : '') }}" 
+          style="cursor: pointer"
+          *ngIf="viewPrivileges.dGrid">
         <a class="nav-link" [routerLink]="['/d-grid']" routerLinkActive="router-link-active" (click)="selectedRoute='d-grid'">d-grid</a>
-      </li>
-      <li class="nav-item {{ ((selectedRoute == 'record') ? 'active' : '') }}" style="cursor: pointer">
-        <a class="nav-link" [routerLink]="['/record']" routerLinkActive="router-link-active" (click)="selectedRoute='record'">record</a>
       </li>
     </ul>
   </div>

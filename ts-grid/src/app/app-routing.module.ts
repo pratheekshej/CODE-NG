@@ -8,7 +8,7 @@ import { RecordRTCComponent } from './featured/record-rtc/record-rtc.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'n-grid',
+    redirectTo: 'record',
     pathMatch: 'full'
   },
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'n-grid'
+    redirectTo: 'record'
   }
 ];
 

@@ -25,7 +25,7 @@ export class DGridComponent implements OnInit {
   vesselData: GridDataContent[] = [];
   columns: ColumnModel[] = [];
   actions: TableActions = {
-    view: 'View',
+    view: 'view',
     delete: true,
     edit: true
   };

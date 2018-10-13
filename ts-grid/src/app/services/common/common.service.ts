@@ -9,6 +9,7 @@ export class CommonService {
 
   jsonLocationPath: any = 'assets/json-data/';
   routerValue: BehaviorSubject<any> = new BehaviorSubject<any>('');
+  viewPrivileges: any;
 
   constructor(
     private http: HttpClient
@@ -24,5 +25,14 @@ export class CommonService {
     this.routerValue.next(routeValue);
   }
 
+  getPrivileges() {
+    this.viewPrivileges = {
+      nGrid: false,
+      rGrid: false,
+      dGrid: false,
+      record: true
+    };
+    return this.viewPrivileges;
+  }
 
 }
